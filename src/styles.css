@@ -72,12 +72,11 @@ ul {
 	border: 3px solid black;
 	cursor: pointer;
 	background-color: #f0f0f0;
-	transition: background-color 0.2s ease, color 0.2s ease;
+	color: white;
 }
 
 .square:hover {
 	background-color: #c6c9d7;
-	color: #f0f0f0;
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -89,6 +88,7 @@ ul {
 	font-weight: bold;
 	border: 3px solid black;
 	background-color: #f0f0f0;
+	color: white;
 }
 
 .status {

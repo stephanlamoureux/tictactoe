@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
 function Square({ value, onSquareClick, isWinner }) {
-	const [isClicked, setIsClicked] = useState(false)
-
 	function squareIsClicked() {
 		if (!value) {
 			onSquareClick()
@@ -11,11 +9,12 @@ function Square({ value, onSquareClick, isWinner }) {
 
 	let squareStyle = {}
 	if (value === 'X') {
-		squareStyle = { backgroundColor: '#209cee', color: '#ffffff', cursor: 'initial' }
+		squareStyle = { backgroundColor: '#209cee', cursor: 'initial' }
 	} else if (value === 'O') {
-		squareStyle = { backgroundColor: '#ffdd57', color: '#000000', cursor: 'initial' }
+		squareStyle = { backgroundColor: '#ffdd57', cursor: 'initial' }
 	}
 
+	// Removes the hover effect when the game ends.
 	const squareButton = isWinner ? 'square-winner' : 'square'
 
 	return (
@@ -54,7 +53,7 @@ export default function Board() {
 		status = 'Tie Game!'
 		statusStyle = { color: '#f64c4c', textTransform: 'uppercase' }
 	} else {
-		status = 'Next player: ' + (xIsNext ? 'X' : 'O')
+		status = 'Player: ' + (xIsNext ? 'X' : 'O')
 		statusStyle = { textShadow: 'none' }
 	}
 
@@ -68,17 +67,19 @@ export default function Board() {
 			<div className="status" style={statusStyle}>
 				{status}
 			</div>
+
+			{/* Create the game board */}
 			<div className="board">
-				<Square value={squares[0]} onSquareClick={() => handleClick(0)} isWinner={isWinner} />
-				<Square value={squares[1]} onSquareClick={() => handleClick(1)} isWinner={isWinner} />
-				<Square value={squares[2]} onSquareClick={() => handleClick(2)} isWinner={isWinner} />
-				<Square value={squares[3]} onSquareClick={() => handleClick(3)} isWinner={isWinner} />
-				<Square value={squares[4]} onSquareClick={() => handleClick(4)} isWinner={isWinner} />
-				<Square value={squares[5]} onSquareClick={() => handleClick(5)} isWinner={isWinner} />
-				<Square value={squares[6]} onSquareClick={() => handleClick(6)} isWinner={isWinner} />
-				<Square value={squares[7]} onSquareClick={() => handleClick(7)} isWinner={isWinner} />
-				<Square value={squares[8]} onSquareClick={() => handleClick(8)} isWinner={isWinner} />
+				{squares.map((square, index) => (
+					<Square
+						key={index}
+						value={square}
+						onSquareClick={() => handleClick(index)}
+						isWinner={isWinner}
+					/>
+				))}
 			</div>
+
 			<button className="reset" onClick={resetGame}>
 				Reset Game
 			</button>
@@ -88,14 +89,14 @@ export default function Board() {
 
 function calculateWinner(squares) {
 	const lines = [
-		[0, 1, 2],
-		[3, 4, 5],
-		[6, 7, 8],
-		[0, 3, 6],
-		[1, 4, 7],
-		[2, 5, 8],
-		[0, 4, 8],
-		[2, 4, 6],
+		[0, 1, 2], // Top row
+		[3, 4, 5], // Middle row
+		[6, 7, 8], // Bottom row
+		[0, 3, 6], // Left column
+		[1, 4, 7], // Middle column
+		[2, 5, 8], // Right column
+		[0, 4, 8], // Left-to-right diagonal
+		[2, 4, 6], // Right-to-left diagonal
 	]
 
 	for (let i = 0; i < lines.length; i++) {
