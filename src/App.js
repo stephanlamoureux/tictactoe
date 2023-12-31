@@ -49,10 +49,10 @@ export default function Board() {
 
 	if (winner) {
 		status = `Winner: ${winner}!`
-		statusStyle = { color: '#30ce3d' }
+		statusStyle = { color: '#30ce3d', textTransform: 'uppercase' }
 	} else if (!squares.includes(null)) {
 		status = 'Tie Game!'
-		statusStyle = { color: '#f64c4c' }
+		statusStyle = { color: '#f64c4c', textTransform: 'uppercase' }
 	} else {
 		status = 'Next player: ' + (xIsNext ? 'X' : 'O')
 		statusStyle = { textShadow: 'none' }
