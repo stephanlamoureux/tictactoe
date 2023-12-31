@@ -95,8 +95,6 @@ ul {
 	margin-bottom: 10px;
 	font-size: 1.4em;
 	font-weight: bold;
-	text-shadow: -1px 0 rgba(0, 0, 0, 0.45), 0 1px rgba(0, 0, 0, 0.45), 1px 0 rgba(0, 0, 0, 0.45),
-		0 -1px rgba(0, 0, 0, 0.6);
 	letter-spacing: 1px;
 }
 
