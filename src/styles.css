@@ -72,13 +72,13 @@ ul {
 	border: 3px solid black;
 	cursor: pointer;
 	background-color: #f0f0f0;
-	transition: ease all 0.2s;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .square:hover {
-	background-color: #209cee;
+	background-color: #c6c9d7;
 	color: #f0f0f0;
-	transition: ease all 0.2s;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 .status {
 	margin-bottom: 10px;

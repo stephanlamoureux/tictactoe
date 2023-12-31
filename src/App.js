@@ -9,12 +9,12 @@ function Square({ value, onSquareClick }) {
 		}
 	}
 
-	const squareStyle =
-		value === 'X'
-			? { backgroundColor: '#209cee', color: '#ffffff', cursor: 'initial' } // Blue background for 'X'
-			: value === 'O'
-			? { backgroundColor: '#ffdd57', color: '#000000', cursor: 'initial' } // Yellow background for 'O'
-			: {}
+	let squareStyle = {}
+	if (value === 'X') {
+		squareStyle = { backgroundColor: '#209cee', color: '#ffffff', cursor: 'initial' }
+	} else if (value === 'O') {
+		squareStyle = { backgroundColor: '#ffdd57', color: '#000000', cursor: 'initial' }
+	}
 
 	return (
 		<button className="square" onClick={squareIsClicked} style={squareStyle}>
